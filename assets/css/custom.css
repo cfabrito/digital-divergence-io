@@ -1,0 +1,37 @@
+@font-face {
+    font-family: font;
+    src: url('/fonts/Monda-Regular.ttf');
+}
+
+/* Increase the default font size */
+html {
+	font-family: font;
+  	font-size: 20pt;
+}
+
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display:block;
+
+  z-index: -1;
+
+}
+
+/* Define the transition duration and properties */
+.transition-fade {
+  transition: 1s opacity;
+  opacity: 1;
+}
+
+html.is-changing .transition-fade {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+html.is-animating .transition-fade {
+  opacity: 0;
+}
