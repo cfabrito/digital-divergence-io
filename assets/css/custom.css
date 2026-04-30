@@ -20,6 +20,7 @@ html {
 
   z-index: -1;
 
+  filter: blur(1px);
 }
 
 /* Define the transition duration and properties */
@@ -34,4 +35,15 @@ html.is-changing .transition-fade {
 }
 html.is-animating .transition-fade {
   opacity: 0;
+}
+
+.article-content
+{
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.vertical-youtube iframe {
+
+  aspect-ratio: 9 / 16;
 }

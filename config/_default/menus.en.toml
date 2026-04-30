@@ -12,8 +12,13 @@
 
 [[main]]
   name = "Portfolio"
-  pageRef = "posts"
-  weight = 10
+  pageRef = "entries"
+  weight = 1
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 2
 
 #[[main]]
 #  name = "Parent"
