@@ -15,15 +15,12 @@ A calibration procedure was implemented using Python and OpenCV. It involves pro
 
 Building on this alignment, a trail effect was implemented in which a sequence of past depth captures is projected simultaneously. This creates a set of moving sillouetes that complemented the performance by allowing the audience to look simultaneously at present and past motion.
 
+{{< youtube id=lhMnWo7SnfA class=vertical-youtube >}}
+
+{{< youtube id=-7nV_beNfys class=vertical-youtube >}}
 
 
-{{< video
-  src="./videos/sandbox/sandbox.mp4"
-  width="600"
->}}
+Future development will focus on collaborations with dance and theatre, using this system as a foundation for more narrative-driven live performances.
 
-The installation was conceived with no concrete goal and no correct way to engage. Instead, it offers an open-ended environment for contemplative play, encouraging participants to reconnect with their bodies and the present moment, and to experience awareness through movement and visual feedback, rather than intention.
-
-sandbox was developed alongside Augmented Acrobatics, adapting the same camera–projector alignment system for audience-driven interaction.
-
+The spatial alignment and tracking system developed here also became the foundation for sandbox, an interactive installation exploring participant-driven interaction with projected particles.
 

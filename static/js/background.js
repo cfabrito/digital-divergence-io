@@ -14,8 +14,8 @@ const Walker2Count = 25;
 const Walker1Step = 1.0;
 const Walker2Step = 0.5;
 
-const Walker1Speed = 3.5;
-const Walker2Speed = 3.5;
+const Walker1Speed = 2.5;
+const Walker2Speed = 2.5;
 
 const WalkerTrails = 50;
 
