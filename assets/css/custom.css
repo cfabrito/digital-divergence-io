@@ -6,7 +6,7 @@
 /* Increase the default font size */
 html {
 	font-family: font;
-  	font-size: 20pt;
+  	font-size: 15pt;
 }
 
 #bg-canvas {
@@ -19,8 +19,6 @@ html {
   display:block;
 
   z-index: -1;
-
-  filter: blur(1px);
 }
 
 /* Define the transition duration and properties */

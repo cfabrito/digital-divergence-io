@@ -16,4 +16,26 @@
 const swup = new Swup({
   containers: ["#main-content"]
 });
+
+function closeMobileMenu() {
+  const toggle = document.getElementById("mobile-menu-toggle");
+  if (toggle) toggle.checked = false;
+}
+
+// Close menu immediately when clicking mobile nav links
+document.addEventListener("click", (event) => {
+  const mobileLink = event.target.closest(
+    '[role="dialog"] nav a'
+  );
+
+  if (mobileLink) {
+    closeMobileMenu();
+  }
+});
+
+// Also force close before every SWUP navigation
+swup.hooks.on("visit:start", () => {
+  closeMobileMenu();
+});
+
 </script>
