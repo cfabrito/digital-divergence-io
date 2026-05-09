@@ -8,8 +8,8 @@ import { LineMaterial } from '/js/three/examples/jsm/lines/LineMaterial.js';
 const CameraZ = 10;
 const CameraFOV = 50;
 
-const Walker1Count = 25;
-const Walker2Count = 25;
+const Walker1Count = 20;
+const Walker2Count = 20;
 
 const Walker1Step = 1.0;
 const Walker2Step = 0.5;
@@ -85,7 +85,7 @@ class Walker
     this.geometry.setPositions( this.positions );
     this.geometry.setColors( this.colors );
 
-    this.material = new LineMaterial( { linewidth: 5, vertexColors: true } );
+    this.material = new LineMaterial( { linewidth: 2, vertexColors: true } );
     this.line = new Line2( this.geometry, this.material );
   }
 
@@ -211,19 +211,47 @@ function getCameraBounds(camera, planeDistance)
   };
 }
 
-function getWalkerBounds(cameraBounds)
+function getWalkerBounds(camera, planeDistance)
 {
-  let margin = 0.9;
+  let cameraBounds = getCameraBounds(camera, planeDistance);
 
-  let bounds = new Bounds(margin * cameraBounds.minx, margin * cameraBounds.maxx, margin * cameraBounds.miny, margin * cameraBounds.maxy, -4, 4);
+  let margin = 0.95;
 
-  return bounds;
+  const width = cameraBounds.maxx - cameraBounds.minx;
+  const height = cameraBounds.maxy - cameraBounds.miny;
+
+  const cx = cameraBounds.minx + width / 2;
+  const cy = cameraBounds.miny + height / 2;
+
+  const halfW = (width * margin) / 2;
+  const halfH = (height * margin) / 2;
+
+  return new Bounds(
+    cx - halfW,
+    cx + halfW,
+    cy - halfH,
+    cy + halfH,
+    -planeDistance,
+    planeDistance
+  );
 }
 
+const canvas = document.getElementById('bg-canvas');
+
+function getSize() {
+
+  return {
+    width: canvas.clientWidth,
+    height: canvas.clientHeight
+  };
+}
 
 let debugMesh;
 
-const canvas = document.getElementById('bg-canvas');
+
+const { width, height } = getSize();
+
+let lastWidth = width;
 
 const scene = new THREE.Scene();
 const ratio = canvas.clientWidth/canvas.clientHeight;
@@ -231,8 +259,8 @@ const ratio = canvas.clientWidth/canvas.clientHeight;
 const camera = new THREE.PerspectiveCamera(CameraFOV, ratio, 0.1, 100);
 camera.position.z = CameraZ;
 
-const renderer = new THREE.WebGLRenderer({canvas});
-renderer.setSize(canvas.clientWidth, window.innerHeight);
+const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
+renderer.setSize(width, height, false);
 
 if (DebugBounds)
 {
@@ -248,8 +276,7 @@ if (DebugBounds)
   scene.add(debugMesh);
 }
 
-
-let bounds = getWalkerBounds(getCameraBounds(camera, 0.5 * CameraZ))
+let bounds = getWalkerBounds(camera, 0.5 * CameraZ)
 
 let redWalkers = Array.from({length: Walker1Count}, (e, i) => new Walker(Walker1Step, WalkerTrails, new THREE.Color(1.0, 0, 0), Walker1Speed, bounds))
 let blueWalkers = Array.from({length: Walker2Count}, (e, i) => new Walker(Walker2Step, WalkerTrails, new THREE.Color(0.0, 0, 1.0), Walker2Speed, bounds))
@@ -257,14 +284,16 @@ let blueWalkers = Array.from({length: Walker2Count}, (e, i) => new Walker(Walker
 redWalkers.forEach(w => scene.add(w.line));
 blueWalkers.forEach(w => scene.add(w.line));
 
-handleResize(canvas.clientWidth, canvas.clientHeight);
+handleResize(getSize());
 
-function handleResize(width, height)
+function handleResize(size)
 {
+  const { width, height } = size;
+
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
 
-  let bounds = getWalkerBounds(getCameraBounds(camera, 0.5 * CameraZ))
+  let bounds = getWalkerBounds(camera, 0.5 * CameraZ)
 
   const box = new THREE.Box3(
     bounds.min,
@@ -303,8 +332,8 @@ function animate(now) {
   let targetY = (mouse.y * 0.5) * 3;
 
   // smooth interpolation (lerp)
-  camera.position.x += (targetX - camera.position.x) * 0.03;
-  camera.position.y += (targetY - camera.position.y) * 0.03;
+  // camera.position.x += (targetX - camera.position.x) * 0.03;
+  // camera.position.y += (targetY - camera.position.y) * 0.03;
 
   camera.lookAt(0, 0, 0);
 
@@ -315,10 +344,20 @@ function animate(now) {
 
 function onResize()
 {
-  handleResize(window.innerWidth, window.innerHeight)
+  const { width, height } = getSize();
+
+  handleResize({width: window.innerWidth, height: window.innerHeight})
 }
 
-window.addEventListener('resize', onResize);
+if (screen.orientation) { // Property doesn't exist on screen in IE11   
+    screen.orientation.addEventListener("change", onResize);
+}
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (!isMobile) {
+  window.addEventListener('resize', onResize);
+}
 
 const mouse = { x: 0, y: 0 };
 

@@ -4,9 +4,9 @@ draft = false
 title = 'self-portrait'
 +++
 
-### Iterative algorithmic frame approximation with simple geometry
+### Frame reconstruction through simple geometry
 
-An audiovisual piece exploring iterative approximation as a form of self-portraiture, inspired by Buddhist concepts of impermanence and non-self, particularly the notion of kalāpas, transient, composite units of phenomena, reflected here in the construction of images from ephemeral geometric primitives.
+An audiovisual piece exploring iterative approximation as a form of self-portraiture, inspired by Buddhist concepts of impermanence and non-self, particularly the notion of kalāpas, transient, composite units of phenomena, reflected here in the construction of images from simple geometric primitives.
 
 {{< video
   src="./videos/self-portrait/self-portrait.mp4" ratio="9/16"

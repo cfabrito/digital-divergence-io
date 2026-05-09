@@ -19,12 +19,14 @@
         {{ i18n "nav.skip_to_main" }}
       </a>
     </div>
+    <div class="relative z-10">
     {{ $header := print "header/" site.Params.header.layout ".html" }}
     {{ if templates.Exists ( printf "partials/%s" $header ) }}
       {{ partial $header . }}
     {{ else }}
       {{ partial "header/basic.html" . }}
     {{ end }}
+    </div>
       <div class="relative flex flex-col grow">
           <main id="main-content" class="grow transition-fade">
             {{ block "main" . }}{{ end }}
