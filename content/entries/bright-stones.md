@@ -1,7 +1,7 @@
 +++
 date = '2025-11-05T15:44:13+01:00'
 draft = false
-title = 'Bright Stones'
+title = 'bright stones'
 +++
 
 ## A Projection Mapping System for Stone Architecture
@@ -21,7 +21,7 @@ During the performance's setup, this model was aligned in TouchDesigner using Ca
 
 Having this new layer, unlocked interesting interactions with the existing generative system, for instance, keeping the architectural mesh continuously present and introducing effects in a subtractive manner, allowing form to emerge through shadow.
 
-{{< youtube id=H6LkITkq14k class=vertical-youtube >}}
+{{< youtube id=H6LkITkq14k class="vertical-youtube" >}}
 
 For the third performance, the system was extended to enable individual control of each stone. The wall’s UV map was remapped into a grayscale-coded representation, in which each stone occupies a unique luminance value, effectively turning the physical surface into a set of addressable elements.
 

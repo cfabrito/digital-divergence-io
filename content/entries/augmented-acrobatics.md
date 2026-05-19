@@ -1,7 +1,7 @@
 +++
 date = '2025-05-11T15:25:51+01:00'
 draft = false
-title = 'Augmented Acrobatics'
+title = 'augmented acrobatics'
 +++
 
 ### A Projection Mapping System Driven by Performer Motion

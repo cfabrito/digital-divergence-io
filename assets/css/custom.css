@@ -16,6 +16,11 @@ html, body {
   background-color: black;
 }
 
+.logo {
+  max-height: 80px;
+  width: auto;
+}
+
 #bg-canvas {
   position: fixed;
   inset: 0;
