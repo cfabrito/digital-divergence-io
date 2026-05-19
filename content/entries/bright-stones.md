@@ -21,7 +21,7 @@ During the performance's setup, this model was aligned in TouchDesigner using Ca
 
 Having this new layer, unlocked interesting interactions with the existing generative system, for instance, keeping the architectural mesh continuously present and introducing effects in a subtractive manner, allowing form to emerge through shadow.
 
-{{< youtube id=H6LkITkq14k class="vertical-youtube" >}}
+{{< youtube id=IdCfYxy2XUA class="vertical-youtube" >}}
 
 For the third performance, the system was extended to enable individual control of each stone. The wall’s UV map was remapped into a grayscale-coded representation, in which each stone occupies a unique luminance value, effectively turning the physical surface into a set of addressable elements.
 
@@ -37,6 +37,6 @@ Using a histogram-based technique, arbitrary images or generative patterns could
   width="600"
 >}}
 
-{{< youtube id=7cUIrFfu4qQ class=vertical-youtube >}}
+{{< youtube id=dvRuJqAyMGI class="vertical-youtube" >}}
 
 This approach is applicable to structures with similar topologies and can be adapted to architectural façades, ruins, and historical sites. The system can also be extended with cameras or other sensors to introduce interactivity, enabling architectural elements to respond directly to the audience and their movement.
