@@ -21,6 +21,10 @@ html, body {
   width: auto;
 }
 
+h2 {
+  text-align: center;
+}
+
 #bg-canvas {
   position: fixed;
   inset: 0;
